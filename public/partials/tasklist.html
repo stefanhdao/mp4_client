@@ -1,0 +1,33 @@
+<div class="list" ng-controller='TaskListController'>   
+  Task View (change the controller later)
+  <form name="myForm" >
+    <label>
+      <input type="radio" name="group" ng-model="displayStatus" value="false" ng-change = "filterTasks()">
+      Pending
+    </label>
+    <label>
+      <input type="radio" name="group" ng-model="displayStatus" value="true" ng-change = "filterTasks()">
+      Completed
+    </label>
+    <label>
+      <input type="radio" name="group" ng-model="displayStatus" value="all" ng-change = "filterTasks()" checked>
+      All
+    </label>
+ </form>
+
+  <a class="button" href="#/addtask">Add Task</a>
+  <ul>
+    <li ng-repeat="task in tasks" >
+      <div class="taskView">
+        <a ng-href="#tasks/{{task._id}}">
+          {{task.name}}
+        </a>
+        <p> {{task.deadline}} </p>
+        <p> Assigned to {{task.assignedUserName}} </p>
+        <button class="deleteButton" ng-href='#gallery' ng-click="deleteTask(task._id)">
+          Delete
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

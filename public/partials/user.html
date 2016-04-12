@@ -1,0 +1,21 @@
+<div class="list" ng-controller='UserController'>
+	<h1> User Profile</h1>
+	<pre> {{user.name}}     {{user.email}} </pre>
+
+	<h2> Pending Tasks </h2>
+	<div class = "pendingView">
+		<div ng-repeat="task in tasks | filter: pendingUserFilter" >
+			<h4> {{task.name}} </h4>
+			<button class="completeTask" ng-href='#gallery' ng-click="completeTask(task)">
+					Complete
+  		</button>
+		</div>
+	</div>
+
+	<h2> Completed Tasks </h2>
+	<div class = "completedView">
+		<div ng-repeat="task in tasks | filter: completedUserFilter" >
+			<h4> {{task.name}} </h4>
+		</div>
+	</div>
+</div>

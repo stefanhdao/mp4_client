@@ -1,0 +1,18 @@
+<div class="list" ng-controller='AddTaskController'>
+
+	<h1> Add Task </h1>
+	<form ng-submit="submit()">
+		  Name *
+		  <input type="text" ng-model="inputName" name="name" required/>
+		  Description
+		  <input type="text" ng-model="inputDescription" name="description"/>
+		  Date *
+		  <input type="date" ng-model="inputDate" name="date" required/>
+		  <select ng-model="inputUser" >
+		  	<option value=""></option>
+        <option ng-repeat="user in users" value="{{user._id}}"> {{user.name}}</option>
+      </select>
+		  <input type="submit" id="submit" value="Submit" />
+	</form>
+
+</div>

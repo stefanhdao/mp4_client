@@ -1,0 +1,17 @@
+<div class="list" ng-controller='UserListController'>		
+	<p> Hi </p>
+	<a class="button" href="#/adduser">Add User</a>
+	<ul>
+		<li ng-repeat="user in users">
+			<div class="userView">
+				<a ng-href="#users/{{user._id}}">
+					{{user.name}}
+				</a>
+				<p> {{user.email}}
+				<button class="deleteButton" ng-href='#gallery' ng-click="deleteUser(user._id)">
+					Delete
+  			</button>
+			</div>
+		</li>
+	</ul>
+</div>
