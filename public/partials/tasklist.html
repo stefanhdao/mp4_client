@@ -12,31 +12,31 @@
       <div class="small-4 columns">
         <form name="myForm" >
           <label>
-            <input type="radio" name="group" ng-model="displayStatus" value="false" ng-change = "filterTasks()" checked />
+            <input type="radio" name="group" ng-model="displayStatus" value="false" ng-change = "resetPagination();filterTasks()" checked />
             Pending
           </label>
           <label>
-            <input type="radio" name="group" ng-model="displayStatus" value="true" ng-change = "filterTasks()" />
+            <input type="radio" name="group" ng-model="displayStatus" value="true" ng-change = "resetPagination();filterTasks()" />
             Completed
           </label>
           <label >
-            <input type="radio" name="group" ng-model="displayStatus" value="all" ng-change = "filterTasks()" />
+            <input type="radio" name="group" ng-model="displayStatus" value="all" ng-change = "resetPagination();filterTasks()" />
             All
           </label>
        </form>
       </div>
       <div class="small-4 columns">
-        <select ng-model="sortOption" ng-options="sortoption for sortoption in sortOptions" ng-change = "filterTasks()">
+        <select ng-model="sortOption" ng-options="sortoption for sortoption in sortOptions" ng-change = "resetPagination();filterTasks()">
         </select>
       </div>
       <div class="small-4 columns">
        <form name="myForm" >
           <label>
-            <input type="radio" name="group" ng-model="orderType" value="ascending" ng-change = "filterTasks()" checked />
+            <input type="radio" name="group" ng-model="orderType" value="ascending" ng-change = "resetPagination();filterTasks()" checked />
             Ascending
           </label>
           <label >
-            <input type="radio" name="group" ng-model="orderType" value="descending" ng-change = "filterTasks()" />
+            <input type="radio" name="group" ng-model="orderType" value="descending" ng-change = "resetPagination();filterTasks()" />
             Descending
           </label>
        </form>

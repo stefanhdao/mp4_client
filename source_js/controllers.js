@@ -263,6 +263,10 @@ mp4Controllers.controller('TaskListController', ['$scope', '$http', 'Tasks', 'Us
     $scope.page = $scope.page + 1;
   }
 
+  $scope.resetPagination = function(){
+    $scope.page = 0;
+  }
+
   $scope.filterTasks = function(){
     var params = {};
 
@@ -280,6 +284,10 @@ mp4Controllers.controller('TaskListController', ['$scope', '$http', 'Tasks', 'Us
       Tasks.getTasksFiltered(params).success(function(data){
         $scope.tasks = data.data;
 
+        console.log($scope.tasks.length)
+        if($scope.tasks.length < taskLimit)
+          $scope.page = 0;
+
       });
     }
     else
@@ -287,11 +295,18 @@ mp4Controllers.controller('TaskListController', ['$scope', '$http', 'Tasks', 'Us
       var order = $scope.orderType === "ascending" ? 1 : -1;
 
       params = {
-        sort : '{"' + $scope.sortOption + '" : ' + order + '}'
+        sort : '{"' + $scope.sortOption + '" : ' + order + '}',
+        skip : $scope.page*taskLimit,
+        limit : taskLimit
       }
 
       Tasks.getTasksFiltered(params).success(function(data){
         $scope.tasks = data.data;
+
+        console.log($scope.tasks.length)
+        if($scope.tasks.length < taskLimit)
+          $scope.page = 0;
+
       });
     }
   }
