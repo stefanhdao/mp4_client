@@ -1,4 +1,4 @@
-var mp4Controllers = angular.module('mp4Controllers', ['720kb.datepicker', 'angularUtils.directives.dirPagination']);
+var mp4Controllers = angular.module('mp4Controllers', ['720kb.datepicker']);
 // '720kb.datepicker'
 
 mp4Controllers.controller('AddTaskController', ['$scope', '$http', 'Users' , 'Tasks', '$window' , function($scope, $http,  Users, Tasks, $window) {
@@ -239,15 +239,29 @@ mp4Controllers.controller('TaskListController', ['$scope', '$http', 'Tasks', 'Us
   $scope.sortOptions = ["dateCreated", "name", "assignedUserName", "deadline"];
   $scope.sortOption = $scope.sortOptions[0];
 
+  $scope.page = 0;
+
+  var taskLimit = 10;
+
   paramsInitial = {
         where : '{ "completed" : false }',
-        sort : '{ "dateCreated" : 1 }'
+        sort : '{ "dateCreated" : 1 }',
+        skip : $scope.page*taskLimit,
+        limit : taskLimit
   }
 
   Tasks.getTasksFiltered(paramsInitial).success(function(data){
 
     $scope.tasks = data.data;
   });
+
+  $scope.previousButton = function(){
+    $scope.page = $scope.page === 0 ? 0 : $scope.page - 1;
+  }
+
+  $scope.nextButton = function() {
+    $scope.page = $scope.page + 1;
+  }
 
   $scope.filterTasks = function(){
     var params = {};
@@ -258,11 +272,14 @@ mp4Controllers.controller('TaskListController', ['$scope', '$http', 'Tasks', 'Us
 
       params = {
         where : '{ "completed" : ' + $scope.displayStatus + '}',
-        sort : '{"' + $scope.sortOption + '" : ' + order + '}'
+        sort : '{"' + $scope.sortOption + '" : ' + order + '}',
+        skip : $scope.page*taskLimit,
+        limit : taskLimit
       }
 
       Tasks.getTasksFiltered(params).success(function(data){
         $scope.tasks = data.data;
+
       });
     }
     else
