@@ -9,4 +9,12 @@
 
 	  <input type="submit" id="submit" value="Submit" />
 	</form>
+
+	<div class="successForm" ng-show="success === 'true'">
+			User {{inputName}} has been added!
+	</div>
+	<div class="successForm" ng-show="success === 'false'">
+			This email ({{inputEmail}}) already exists!
+	</div>
+
 </div>

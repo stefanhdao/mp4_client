@@ -1,7 +1,44 @@
-<div class="list" ng-controller='TaskController'>
+<div class="list" ng-controller='EditTaskController'>
 	
 	<h1> Edit Task </h1>
 	<h2> {{task.name}} </h2>
+	<form ng-submit="submit()">
+		  Name *
+		  <input type="text" ng-model="inputName" name="name" required/>
+		  Description
+		  <input type="text" ng-model="inputDescription" name="description"/>
+		  Date *
+
+		  <datepicker>
+  			<input ng-model="inputDate" type="text" required/>
+			</datepicker>
+			<br>
+
+			User
+
+		  <select ng-model="inputUser" ng-options="user.name for user in users">
+		  	<option value=""> </option>
+      </select>
+
+      Completed 
+      <label>
+	      <input type="radio" name="group" ng-model="inputCompleted" value="true">
+	      <span> True
+	    	</input>
+    	</label>
+    	<label>
+	      <input type="radio" name="group" ng-model="inputCompleted" value="false">
+	      <span> False
+	    	</input>
+    	</label>
+
+		  <input type="submit" id="submit" value="Submit" />
+
+		  <div class="successForm" ng-show="success === 'true'">
+					Task {{inputName}} has been edited!
+			</div>
+	</form>
+
 </div>
 
 <!--

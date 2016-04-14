@@ -30,6 +30,11 @@ mp4Services.factory('Users', function($http, $window) {
         deleteUser : function(id) {
             var baseUrl = $window.sessionStorage.baseurl;
             return $http.delete(baseUrl+'/api/users/' + id);
+        },
+        updateUser : function(object)
+        {
+            var baseUrl = $window.sessionStorage.baseurl;
+            return $http.put(baseUrl+'/api/users/' + object._id, object);
         }
     }
 });
@@ -42,12 +47,10 @@ mp4Services.factory('Tasks', function($http, $window) {
         },
         getTask : function(id) {
             var baseUrl = $window.sessionStorage.baseurl;
-            console.log('I hope we didnt fuck up')
             return $http.get(baseUrl+'/api/tasks/' + id);
         },
         getTasksFiltered : function(parameters) {
             var baseUrl = $window.sessionStorage.baseurl;
-            console.log('I hope we didnt fuck up')
             return $http.get(baseUrl+'/api/tasks/', { params : parameters});
         },
         deleteTask : function(id) {

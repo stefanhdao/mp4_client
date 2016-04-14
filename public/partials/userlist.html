@@ -2,16 +2,24 @@
 	<p> Hi </p>
 	<a class="button" href="#/adduser">Add User</a>
 	<ul>
-		<li ng-repeat="user in users">
-			<div class="userView">
-				<a ng-href="#users/{{user._id}}">
-					{{user.name}}
-				</a>
-				<p> {{user.email}}
-				<button class="deleteButton" ng-href='#gallery' ng-click="deleteUser(user._id)">
-					Delete
-  			</button>
-			</div>
-		</li>
-	</ul>
+    <li ng-repeat="user in users">
+      <div class="row userView">
+        <div class="small-4 columns">
+          <a ng-href="#users/{{user._id}}">
+            {{user.name}}
+          </a>
+        </div>
+        <div class="small-4 columns">
+          <p> {{user.email}} </p>
+        </div>
+        <div class="small-4 columns deleteButton">
+          <button class="deleteButton" ng-click="deleteUser(user._id)">
+            Delete
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
+
+	

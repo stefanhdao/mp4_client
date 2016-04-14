@@ -7,3 +7,27 @@
 .completeTask {
 	background: red;
 }
+
+ul {
+	list-style-type: none;
+}
+
+.taskView {
+	border-style: solid;
+	border-width: 1px;
+}
+
+.userView {
+	border-style: solid;
+	border-width: 1px;
+}
+
+.pendingView {
+	border-style: solid;
+	border-width: 1px;
+}
+
+.completedView {
+	border-style: solid;
+	border-width: 1px;
+}

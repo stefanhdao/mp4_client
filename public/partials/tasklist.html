@@ -1,33 +1,64 @@
 <div class="list" ng-controller='TaskListController'>   
-  Task View (change the controller later)
-  <form name="myForm" >
-    <label>
-      <input type="radio" name="group" ng-model="displayStatus" value="false" ng-change = "filterTasks()">
-      Pending
-    </label>
-    <label>
-      <input type="radio" name="group" ng-model="displayStatus" value="true" ng-change = "filterTasks()">
-      Completed
-    </label>
-    <label>
-      <input type="radio" name="group" ng-model="displayStatus" value="all" ng-change = "filterTasks()" checked>
-      All
-    </label>
- </form>
+  Task View
+  <div class="row">
+    <div class="small-8 columns">
+      <div class="small-4 columns">
+        <form name="myForm" >
+          <label>
+            <input type="radio" name="group" ng-model="displayStatus" value="false" ng-change = "filterTasks()" checked />
+            Pending
+          </label>
+          <label>
+            <input type="radio" name="group" ng-model="displayStatus" value="true" ng-change = "filterTasks()" />
+            Completed
+          </label>
+          <label >
+            <input type="radio" name="group" ng-model="displayStatus" value="all" ng-change = "filterTasks()" />
+            All
+          </label>
+       </form>
+      </div>
+      <div class="small-4 columns">
+        <select ng-model="sortOption" ng-options="sortoption for sortoption in sortOptions" ng-change = "filterTasks()">
+        </select>
+      </div>
+      <div class="small-4 columns">
+       <form name="myForm" >
+          <label>
+            <input type="radio" name="group" ng-model="orderType" value="ascending" ng-change = "filterTasks()" checked />
+            Ascending
+          </label>
+          <label >
+            <input type="radio" name="group" ng-model="orderType" value="descending" ng-change = "filterTasks()" />
+            Descending
+          </label>
+       </form>
+      </div>
+    </div>
+  </div>
+  <div class="small-8 columns">
+  </div>
 
   <a class="button" href="#/addtask">Add Task</a>
   <ul>
     <li ng-repeat="task in tasks" >
-      <div class="taskView">
-        <a ng-href="#tasks/{{task._id}}">
-          {{task.name}}
-        </a>
-        <p> {{task.deadline}} </p>
-        <p> Assigned to {{task.assignedUserName}} </p>
-        <button class="deleteButton" ng-href='#gallery' ng-click="deleteTask(task._id)">
-          Delete
-        </button>
+      <div class="row taskView">
+        <div class="small-4 columns">
+          <a ng-href="#tasks/{{task._id}}">
+            {{task.name}}
+          </a>
+        </div>
+        <div class="small-4 columns">
+          <p> {{task.deadline}} </p>
+          <p> Assigned to {{task.assignedUserName}} </p>
+        </div>
+        <div class="small-4 columns deleteButton">
+          <button ng-href='#gallery' ng-click="deleteTask(task._id)">
+            Delete
+          </button>
+        </div>
       </div>
+
     </li>
   </ul>
 </div>
