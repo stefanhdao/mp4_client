@@ -1,4 +1,4 @@
-var mp4Controllers = angular.module('mp4Controllers', ['720kb.datepicker']);
+var mp4Controllers = angular.module('mp4Controllers', ['720kb.datepicker', 'angularUtils.directives.dirPagination']);
 // '720kb.datepicker'
 
 mp4Controllers.controller('AddTaskController', ['$scope', '$http', 'Users' , 'Tasks', '$window' , function($scope, $http,  Users, Tasks, $window) {
@@ -366,6 +366,10 @@ mp4Controllers.controller('AddUserController', ['$scope', '$http', 'Users', '$wi
   $scope.list = []
   $scope.success = 'none';
 
+  $scope.clearSuccess = function() {
+    $scope.success = 'none';
+  };
+
   $scope.submit = function() {
 
     var newObject = {
@@ -386,6 +390,8 @@ mp4Controllers.controller('AddUserController', ['$scope', '$http', 'Users', '$wi
 
 mp4Controllers.controller('UserController', ['$scope' , '$routeParams', '$http', 'Users', 'Tasks', '$window' , function($scope, $routeParams, $http, Users, Tasks, $window) {
   var userid = $routeParams.userid;
+
+  $scope.show = 'false;'
 
   Users.getUser(userid).success(function(data){
     $scope.user = data.data;
@@ -418,6 +424,11 @@ mp4Controllers.controller('UserController', ['$scope' , '$routeParams', '$http',
       })
 
     });
+  }
+
+  $scope.showCompletedTasks = function()
+  {
+    $scope.show = 'true';
   }
 
 }]);

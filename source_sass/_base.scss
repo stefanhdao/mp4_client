@@ -1,7 +1,48 @@
 // Add any custom Sass & CSS here
 
-.deleteButton {
-	background: red;
+.titleContainer {
+	width: 80%;
+	background-color: #ADBEC4;
+}
+
+.headerBox {
+	text-align:center;
+	width: 50%;
+  margin: 0 auto; 
+}
+
+.controlsBox {
+	width: 50%;
+  margin: 0 auto; 
+}
+
+.link {
+	font-weight: bold;
+}
+
+.deleteButton
+{
+	text-align: center;
+	border-radius: 5px;
+	background-color: red;
+	cursor: pointer;
+  width:25%;
+  height:100%;
+}
+
+.makeRed {
+	background-color: blue;
+	
+}
+
+.makeGreen {
+	background-color: red;
+}
+
+.container {
+	display: block;
+	width: 100%;
+  margin: 0 auto; 
 }
 
 .completeTask {
@@ -13,21 +54,91 @@ ul {
 }
 
 .taskView {
-	border-style: solid;
+	border-top: solid;
+	border-width: 1px;
+}
+
+.taskView2 {
+	border-top: solid;
+	border-bottom: solid;
 	border-width: 1px;
 }
 
 .userView {
-	border-style: solid;
+
+	border-top: solid;
 	border-width: 1px;
 }
 
 .pendingView {
-	border-style: solid;
+	border-top: solid;
+	border-bottom: solid;
 	border-width: 1px;
 }
 
 .completedView {
-	border-style: solid;
+	border-top: solid;
 	border-width: 1px;
+}
+
+.paginationControls {
+	margin: 0 auto;
+	display: block;
+  width: 60%;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.addButton {
+	clear: left;
+}
+
+.inputContainer {
+	text-align:center;
+	width: 50%;
+  margin: 0 auto; 
+}
+
+form p {
+	text-align: left;
+}
+
+.successForm {
+	background: green;
+}
+
+.failedForm {
+	background: red;
+
+}
+
+.inputForm {
+	margin-top: 10px;
+	height: 100px;
+	display: table;
+	font-family: Impact, Charcoal, sans-serif;
+	width: 100%;
+}
+
+.inputForm p {
+	display: table-cell;
+  vertical-align: middle;
+}
+
+.justLine {
+	border-top: solid;
+	border-width: 1px;
+}
+
+.showButton
+{
+	text-align: center;
+	border-radius: 5px;
+	background-color: #4BA69D;
+	cursor: pointer;
+  width:25%;
+  height:100%;
+  margin: 0 auto; 
 }

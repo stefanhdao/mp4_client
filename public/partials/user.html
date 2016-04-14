@@ -1,43 +1,59 @@
 <div class="list" ng-controller='UserController'>
-	<h1> User Profile</h1>
-	<pre> {{user.name}}     {{user.email}} </pre>
+	
+	
 
-	<h2> Pending Tasks </h2>
-	<ul>
-    <li ng-repeat="task in tasks | filter:pendingUserFilter" >
-      <div class="row pendingView">
-        <div class="small-4 columns">
-          <a ng-href="#tasks/{{task._id}}">
-            {{task.name}}
-          </a>
-        </div>
-        <div class="small-4 columns">
-          <p> {{task.deadline}} </p>
-        </div>
-        <div class="small-4 columns deleteButton">
-          <button class="completeTask" ng-href='#gallery' ng-click="completeTask(task)">
-					Complete
-  		    </button>
-        </div>
-      </div>
-    </li>
-  </ul>
+  <div class="headerBox">
+    <h1> User </h1>
+    <pre> {{user.name}}       {{user.email}} </pre>
+    <div class="justLine"></div>
+  </div>
 
-	<h2> Completed Tasks </h2>
-	<ul>
-		<li ng-repeat="task in tasks | filter: completedUserFilter" >
-      <div class="row completedView">
-        <div class="small-4 columns">
-          <a ng-href="#tasks/{{task._id}}">
-            {{task.name}}
-          </a>
+  <div class="text-center">
+  	<h2> Pending Tasks </h2>
+  	<ul>
+      <li ng-repeat="task in tasks | filter:pendingUserFilter" >
+        <div class="row pendingView">
+          <div class="small-4 columns">
+            <a ng-href="#tasks/{{task._id}}">
+              {{task.name}}
+            </a>
+          </div>
+          <div class="small-4 columns">
+            <p> Deadline: {{task.deadline | date : format : longDate}} </p>
+          </div>
+          <div class="small-4 columns ">
+            <div ng-href='#gallery' class="deleteButton link" ng-click="completeTask(task)" >
+                Complete
+            </div>
+          </div>
         </div>
-        <div class="small-4 columns">
-          <p> {{task.deadline}} </p>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-href='#gallery' class="showButton link text-center" ng-click="showCompletedTasks()" >
+    Show Completed Tasks
+  </div>
+  <br/>
+  <br/>
+
+  <div class="text-center" ng-show="show === 'true'">
+  	<h2> Completed Tasks </h2>
+  	<ul>
+  		<li ng-repeat="task in tasks | filter: completedUserFilter" >
+        <div class="row completedView">
+          <div class="small-4 columns">
+            <a ng-href="#tasks/{{task._id}}">
+              {{task.name}}
+            </a>
+          </div>
+          <div class="small-4 columns">
+            <p> Deadline: {{task.deadline | date : format : longDate}} </p>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </div>
 
 	

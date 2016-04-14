@@ -1,20 +1,27 @@
 <div class="list" ng-controller='AddUserController'>    
-  Add User
+  
+	<div class="headerBox">
+		<br/>
+    <h1> Add User </h1>
+  </div>
+  <div class="inputContainer">
+	  <form ng-submit="submit()">
+		  <p> Name <font color ="red ">*</font> </p>
+		  <input type="text" ng-model="inputName" name="name" size="20" required/>
+		  <p> Email <font color ="red ">*</font> </p>
+		  <input type="email" ng-model="inputEmail" name="email" ng-change=clearSuccess() required/>
 
-  <form ng-submit="submit()">
-	  Name
-	  <input type="text" ng-model="inputName" name="name" size="20" required/>
-	  Email
-	  <input type="email" ng-model="inputEmail" name="email" required/>
+		  <input type="submit" id="submit" value="Submit" />
+		</form>
 
-	  <input type="submit" id="submit" value="Submit" />
-	</form>
+		<br\>
 
-	<div class="successForm" ng-show="success === 'true'">
-			User {{inputName}} has been added!
-	</div>
-	<div class="successForm" ng-show="success === 'false'">
-			This email ({{inputEmail}}) already exists!
+		<div class="successForm inputForm" ng-show="success === 'true'">
+				<p> User {{inputName}} has been added! <p>
+		</div>
+		<div class="failedForm inputForm" ng-show="success === 'false'">
+				<p> The email ({{inputEmail}}) already exists! <p>
+		</div>
 	</div>
 
 </div>

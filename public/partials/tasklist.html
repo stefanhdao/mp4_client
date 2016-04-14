@@ -1,7 +1,15 @@
 <div class="list" ng-controller='TaskListController'>   
-  Task View
-  <div class="row">
-    <div class="small-8 columns">
+
+  <div class="headerBox">
+    <span>
+      <h1> Tasks
+      <a class="button" href="#/addtask">Add Task</a>
+    </span>
+  </div>
+
+
+  <div class="row controlsBox">
+    <div class="small-6 columns container">
       <div class="small-4 columns">
         <form name="myForm" >
           <label>
@@ -36,29 +44,44 @@
       </div>
     </div>
   </div>
-  <div class="small-8 columns">
+
+  <!--
+
+    Pagination code created with angular-utils-pagination by following the article listed below:
+
+    http://code.ciphertrick.com/2015/06/01/search-sort-and-pagination-ngrepeat-angularjs/
+
+  -->
+  <div class="paginationControls text-center">
+    <dir-pagination-controls
+     max-size="5"
+     direction-links="true"
+     boundary-links="true" >
+    </dir-pagination-controls>
   </div>
 
-  <a class="button" href="#/addtask">Add Task</a>
   <ul>
-    <li ng-repeat="task in tasks" >
-      <div class="row taskView">
-        <div class="small-4 columns">
-          <a ng-href="#tasks/{{task._id}}">
-            {{task.name}}
-          </a>
-        </div>
-        <div class="small-4 columns">
-          <p> {{task.deadline}} </p>
-          <p> Assigned to {{task.assignedUserName}} </p>
-        </div>
-        <div class="small-4 columns deleteButton">
-          <button ng-href='#gallery' ng-click="deleteTask(task._id)">
-            Delete
-          </button>
-        </div>
-      </div>
+    <li dir-paginate="task in tasks|itemsPerPage:10" >
 
+        <div class="row taskView">
+          <div class="small-4 columns">
+            <a ng-href="#tasks/{{task._id}}" class="link">
+              {{task.name}}
+            </a>
+          </div>
+          <div class="small-4 columns">
+            <p> Deadline: {{task.deadline | date : format : longDate}} </p>
+            <p> Assigned to {{task.assignedUserName}} </p>
+          </div>
+          <div class="small-4 columns" >
+            <br/>
+            <div ng-href='#gallery' class="deleteButton link" ng-click="deleteTask(task._id)" >
+              DELETE
+            </div>
+          </div>
+        </div>
+
+      </div>
     </li>
   </ul>
 </div>

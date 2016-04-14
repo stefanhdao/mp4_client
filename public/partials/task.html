@@ -1,17 +1,18 @@
 <div class="list" ng-controller='TaskController'>
-	<span>
-		<h1> Task  </h1>
-	<span>
-	<a class="button" href="#/edittask/{{task._id}}">Edit Task</a>
+	<div class="headerBox">
+		<br/>
+    <a class="button" href="#/edittask/{{task._id}}">Edit Task</a>
+  </div>
+	
 
-	<div class="row taskView">
+	<div class="row taskView2">
       <div class="small-6 columns">
 				<h3> {{task.name}} <h3>
 				<br/>
 				<h6> Assigned to: {{task.assignedUserName}} <h6>
 			</div>
 			<div class="small-6 columns">
-				<h5> {{task.deadline}} <h5>	
+				<h5> Deadline: {{task.deadline | date : format : longDate}}  <h5>	
 				<h6> Completed: {{task.completed}} <h6>
 			</div>
 	</div>
